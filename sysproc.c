@@ -26,6 +26,18 @@ sys_wait(void)
   return wait();
 }
 
+int sys_cps(void){
+    return cps();
+}
+
+int sys_set_priority(void){
+    int pid,v;
+    if (argint(1,&v)<0) return -1;
+    if (argint(1,&v)>100) return -1;
+    if (argint(0,&pid)<0) return -1;
+    return set_priority(pid,v);
+}
+
 int
 sys_kill(void)
 {
